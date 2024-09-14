@@ -86,7 +86,7 @@ Para entender mejor la estructura y diseño de la aplicación "TechConnec", revi
 
 ### Diagrama de Base de Datos
 
-![Diagrama de Base de Datos]()
+![Diagrama de Base de Datos](diagrama_base_datos_techconnec.jpg)
 
 Este diagrama ilustra el esquema de la base de datos utilizada por la aplicación, mostrando las tablas, columnas, y relaciones entre las entidades.
 
