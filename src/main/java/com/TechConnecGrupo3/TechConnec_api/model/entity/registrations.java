@@ -1,5 +1,6 @@
-package main.java.com.TechConnecGrupo3.TechConnec_api.model.entity;
-
+package com.TechConnecGrupo3.TechConnec_api.model.entity;
+import jakarta.persistence.*;
+import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,12 +12,12 @@ public class Registrations {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", foreignKey =@ForeignKey(name = "FK_users_registrations"))
+    private User usuario;
 
     @ManyToOne
-    @JoinColumn(name = "evento_id", nullable = false)
-    private Evento evento;
+    @JoinColumn(name = "evento_id", referencedColumnName = "id", foreignKey =@ForeignKey(name = "FK_events_registrations"))
+    private Events evento;
 
     @Column(name = "fecha_inscripcion", nullable = false)
     private LocalDateTime fechaInscripcion;

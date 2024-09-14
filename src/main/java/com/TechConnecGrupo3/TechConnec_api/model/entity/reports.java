@@ -1,5 +1,6 @@
-package main.java.com.TechConnecGrupo3.TechConnec_api.model.entity;
-
+package com.TechConnecGrupo3.TechConnec_api.model.entity;
+import jakarta.persistence.*;
+import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
@@ -11,8 +12,8 @@ public class Reports {
     private Integer id;
 
     @ManyToOne
-    @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    @JoinColumn(name = "usuario_id", referencedColumnName = "id", foreignKey =@ForeignKey(name = "FK_users_reports"))
+    private User usuario;
 
     @Column(name = "tipo_reporte", nullable = false)
     private String tipoReporte;
