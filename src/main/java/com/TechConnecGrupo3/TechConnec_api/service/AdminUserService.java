@@ -1,4 +1,4 @@
-package main.java.com.TechConnecGrupo3.TechConnec_api.service;
+package com.TechConnecGrupo3.TechConnec_api.service;
 
 import com.TechConnecGrupo3.TechConnec_api.model.entity.User;
 import org.springframework.data.domain.Page;

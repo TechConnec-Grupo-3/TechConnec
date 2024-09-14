@@ -1,5 +1,6 @@
-package main.java.com.TechConnecGrupo3.TechConnec_api.model.entity;
-
+package com.TechConnecGrupo3.TechConnec_api.model.entity;
+import jakarta.persistence.*;
+import lombok.Data;
 import java.time.LocalDateTime;
 
 @Data
@@ -12,11 +13,11 @@ public class Payments {
 
     @ManyToOne
     @JoinColumn(name = "usuario_id", nullable = false)
-    private Usuario usuario;
+    private User usuario;
 
     @ManyToOne
     @JoinColumn(name = "evento_id", nullable = false)
-    private Evento evento;
+    private Events evento;
 
     @Column(name = "monto", nullable = false)
     private Double monto;

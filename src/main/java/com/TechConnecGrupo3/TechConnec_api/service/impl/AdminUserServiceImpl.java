@@ -1,4 +1,4 @@
-package main.java.com.TechConnecGrupo3.TechConnec_api.service.impl;
+package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
 import com.TechConnecGrupo3.TechConnec_api.model.entity.User;
 import com.TechConnecGrupo3.TechConnec_api.repository.UserRepository;
