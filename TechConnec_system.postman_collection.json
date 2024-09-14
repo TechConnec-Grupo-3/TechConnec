@@ -13,15 +13,25 @@
 				{
 					"name": "userRegistration",
 					"request": {
-						"method": "GET",
-						"header": []
+						"method": "POST",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/users/page",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"users",
+								"page"
+							]
+						}
 					},
 					"response": []
 				},
 				{
 					"name": "userLogin",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -29,7 +39,7 @@
 				{
 					"name": "passwordRecovery",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -37,7 +47,7 @@
 				{
 					"name": "editUser",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": []
 					},
 					"response": []
@@ -45,7 +55,7 @@
 				{
 					"name": "deleteUser",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": []
 					},
 					"response": []
@@ -53,7 +63,7 @@
 				{
 					"name": "createUserProfile",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -69,7 +79,7 @@
 				{
 					"name": "editUserProfile",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": []
 					},
 					"response": []
@@ -78,7 +88,16 @@
 					"name": "deleteUserProfile",
 					"request": {
 						"method": "DELETE",
-						"header": []
+						"header": [],
+						"url": {
+							"raw": "{{}}/",
+							"host": [
+								"{{}}"
+							],
+							"path": [
+								""
+							]
+						}
 					},
 					"response": []
 				}
@@ -114,7 +133,7 @@
 				{
 					"name": "editEvent",
 					"request": {
-						"method": "GET",
+						"method": "PUT",
 						"header": []
 					},
 					"response": []
@@ -122,7 +141,7 @@
 				{
 					"name": "scheduleEventPublishing",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -130,7 +149,7 @@
 				{
 					"name": "deleteEvent",
 					"request": {
-						"method": "GET",
+						"method": "DELETE",
 						"header": []
 					},
 					"response": []
@@ -146,7 +165,7 @@
 				{
 					"name": "sendAttendeeNotifications",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -154,7 +173,7 @@
 				{
 					"name": "sendEventUpdates",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -162,7 +181,7 @@
 				{
 					"name": "sendEventSurveys",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -175,7 +194,7 @@
 				{
 					"name": "eventRegistration",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -191,7 +210,7 @@
 				{
 					"name": "cancelRegistration",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -207,7 +226,7 @@
 				{
 					"name": "receiveEventReminders",
 					"request": {
-						"method": "GET",
+						"method": "POST",
 						"header": []
 					},
 					"response": []
@@ -221,6 +240,35 @@
 		{
 			"name": "reportModule",
 			"item": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:5432/api/v1",
+			"type": "string"
 		}
 	]
 }
