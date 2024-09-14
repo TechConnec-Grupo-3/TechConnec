@@ -1,6 +1,6 @@
 package main.java.com.TechConnecGrupo3.TechConnec_api.service;
 
-import com.upao.techconnect.model.entity.User;
+import com.TechConnecGrupo3.TechConnec_api.model.entity.User;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.transaction.annotation.Transactional;
