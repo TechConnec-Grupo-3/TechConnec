@@ -1,0 +1,226 @@
+{
+	"info": {
+		"_postman_id": "b645ed94-5a0c-41f2-ba7e-bec36b8e0c34",
+		"name": "TechConnec_system",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "37983618",
+		"_collection_link": "https://techconnec-grupo-3.postman.co/workspace/TechConnec-Grupo-3~ce1e7873-b3e7-45b8-89c3-6599f8de54ad/collection/37983618-b645ed94-5a0c-41f2-ba7e-bec36b8e0c34?action=share&source=collection_link&creator=37983618"
+	},
+	"item": [
+		{
+			"name": "userManagment",
+			"item": [
+				{
+					"name": "userRegistration",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "userLogin",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "passwordRecovery",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "editUser",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "createUserProfile",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "viewUserProfile",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "editUserProfile",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUserProfile",
+					"request": {
+						"method": "DELETE",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "eventManagement",
+			"item": [
+				{
+					"name": "createCategories",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "createEvent",
+					"request": {
+						"method": "POST",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "viewAvailableEvents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "editEvent",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "scheduleEventPublishing",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "deleteEvent",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "viewAttendeeList",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "sendAttendeeNotifications",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "sendEventUpdates",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "sendEventSurveys",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "eventRegistrationParcitipation",
+			"item": [
+				{
+					"name": "eventRegistration",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "viewRegisteredEvents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "cancelRegistration",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "searchEvents",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				},
+				{
+					"name": "receiveEventReminders",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "paymentModule",
+			"item": []
+		},
+		{
+			"name": "reportModule",
+			"item": []
+		}
+	]
+}
