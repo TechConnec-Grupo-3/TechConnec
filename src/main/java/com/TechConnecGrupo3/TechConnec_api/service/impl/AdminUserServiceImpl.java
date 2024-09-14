@@ -1,8 +1,8 @@
 package main.java.com.TechConnecGrupo3.TechConnec_api.service.impl;
 
-import com.upao.techconnect.model.entity.User;
-import com.upao.techconnect.repository.UserRepository;
-import com.upao.techconnect.service.AdminUserService;
+import com.TechConnecGrupo3.TechConnec_api.model.entity.User;
+import com.TechConnecGrupo3.TechConnec_api.repository.UserRepository;
+import com.TechConnecGrupo3.TechConnec_api.service.AdminUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
