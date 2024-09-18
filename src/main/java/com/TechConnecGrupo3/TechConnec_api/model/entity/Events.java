@@ -1,31 +1,34 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
+
 import jakarta.persistence.*;
 import lombok.Data;
-import java.time.LocalDateTime;
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Data
 @Entity
 @Table(name = "events")
 public class Events {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "titulo", nullable = false)
-    private String titulo;
+    @Column(nullable = false)
+    private String title;
 
-    @Column(name = "descripcion", nullable = false)
-    private String descripcion;
+    @Column(nullable = false)
+    private String description;
 
-    @Column(name = "fecha", nullable = false)
-    private LocalDateTime fecha;
+    @Column(nullable = false)
+    private String location;
 
-    @Column(name = "ubicacion", nullable = false)
-    private String ubicacion;
+    @Column(nullable = false)
+    private LocalDate date;
 
-    @Column(name = "organizador_id", nullable = false)
-    private Integer organizadorId;
+    @Column(nullable = false)
+    private LocalTime time;
 
-    @Column(name = "capacidad", nullable = false)
+    @Column(nullable = false)  // Añadir capacidad como no nulo
     private Integer capacidad;
 }
