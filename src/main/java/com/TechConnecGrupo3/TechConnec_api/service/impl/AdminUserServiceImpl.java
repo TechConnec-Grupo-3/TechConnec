@@ -62,4 +62,6 @@ public class AdminUserServiceImpl implements AdminUserService {
         User user = findById(id);
         userRepository.delete(user);
     }
+
+
 }
