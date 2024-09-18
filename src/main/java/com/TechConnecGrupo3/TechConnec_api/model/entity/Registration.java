@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "registrations")
-public class Registrations {
+public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
