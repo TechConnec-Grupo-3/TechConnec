@@ -27,5 +27,7 @@ public class Payments {
     private LocalDateTime fechaPago;
 
     @Column(name = "metodo_pago", nullable = false)
-    private String metodoPago;}
+    private String metodoPago;
 
+
+}
