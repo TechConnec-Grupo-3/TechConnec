@@ -49,4 +49,10 @@ public class AdminUserController {
     public void delete(@PathVariable Integer id) {
         adminUserService.delete(id);
     }
+
+    @PostMapping("/reset/{id}")
+    public User resetPassword(@PathVariable Integer id, @RequestBody User user) {
+        return adminUserService.resetPassword( id, user);
+    }
+
 }

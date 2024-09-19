@@ -6,7 +6,7 @@ import java.time.LocalDateTime;
 @Data
 @Entity
 @Table(name = "registrations")
-public class Registrations {
+public class Registration {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
@@ -17,7 +17,6 @@ public class Registrations {
 
     @ManyToOne
     @JoinColumn(name = "evento_id", referencedColumnName = "id", foreignKey =@ForeignKey(name = "FK_events_registrations"))
-
     private Events evento;
 
     @Column(name = "fecha_inscripcion", nullable = false)

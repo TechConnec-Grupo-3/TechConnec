@@ -17,4 +17,6 @@ public interface AdminUserService {
     User update(Integer id, User updatedUser);
 
     void delete(Integer id);
+
+    User resetPassword(Integer id,User user);
 }
