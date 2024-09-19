@@ -28,7 +28,9 @@ public class User {
     @Column(name = "register_at")
     private LocalDateTime registerAt;
 
+
     @Enumerated(EnumType.STRING)
     private PaymentStatus pago;
 }
+
 

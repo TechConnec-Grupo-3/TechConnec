@@ -15,10 +15,13 @@ public class EventController {
 
     private final AdminEventService adminEventService;
 
+
+    @PutMapping("/{id}")
+    public Event update(@PathVariable Integer id, @RequestBody Event user) {
+        return adminEventService.update(id, user);
+    }
+
     @GetMapping("/list")
     public List<Event> listAll() {
         return adminEventService.findAll();
     }
-
-
-}
