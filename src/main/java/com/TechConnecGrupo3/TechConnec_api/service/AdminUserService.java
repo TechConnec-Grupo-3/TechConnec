@@ -17,4 +17,7 @@ public interface AdminUserService {
     User update(Integer id, User updatedUser);
 
     void delete(Integer id);
+
+    void login(User user);
+    User findByEmail(String email);
 }
