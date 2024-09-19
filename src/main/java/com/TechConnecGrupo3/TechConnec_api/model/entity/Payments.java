@@ -27,4 +27,5 @@ public class Payments {
 
     @Column(name = "metodo_pago", nullable = false)
     private String metodoPago;
-    }
+
+}
