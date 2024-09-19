@@ -1,9 +1,5 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
-<<<<<<< Updated upstream
-import com.TechConnecGrupo3.TechConnec_api.emums.PaymentStatus;
-=======
 
->>>>>>> Stashed changes
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -33,6 +29,3 @@ public class Payments {
     @Column(name = "metodo_pago", nullable = false)
     private String metodoPago;}
 
-    @Enumerated(EnumType.STRING)
-    private Payments pago;
-}
