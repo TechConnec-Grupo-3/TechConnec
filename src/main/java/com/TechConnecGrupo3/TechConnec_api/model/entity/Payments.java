@@ -18,7 +18,7 @@ public class Payments {
 
     @ManyToOne
     @JoinColumn(name = "evento_id", nullable = false)
-    private Events evento;
+    private Event evento;
 
     @Column(name = "monto", nullable = false)
     private Double monto;
