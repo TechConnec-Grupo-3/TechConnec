@@ -1,5 +1,6 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
 
+import com.TechConnecGrupo3.TechConnec_api.emums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -27,6 +28,9 @@ public class User {
     @Column(name = "register_at")
     private LocalDateTime registerAt;
 
+
     @Enumerated(EnumType.STRING)
-    private Role role;
+    private PaymentStatus pago;
 }
+
+
