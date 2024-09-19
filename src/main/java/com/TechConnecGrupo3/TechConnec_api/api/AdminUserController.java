@@ -49,4 +49,14 @@ public class AdminUserController {
     public void delete(@PathVariable Integer id) {
         adminUserService.delete(id);
     }
+
+    @PostMapping("/login")
+    public String login(@RequestBody User user) {
+        User user2 = adminUserService.findByEmail(user.getEmail());
+        if (user2 != null && user.getPassword().equals(user2.getPassword())) {
+            return "Ingresando";
+        } else {
+            return "Denegado";
+        }
+    }
 }
