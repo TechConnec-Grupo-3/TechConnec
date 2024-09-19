@@ -17,7 +17,8 @@ public class Registrations {
 
     @ManyToOne
     @JoinColumn(name = "evento_id", referencedColumnName = "id", foreignKey =@ForeignKey(name = "FK_events_registrations"))
-    private Event evento;
+
+    private Events evento;
 
     @Column(name = "fecha_inscripcion", nullable = false)
     private LocalDateTime fechaInscripcion;

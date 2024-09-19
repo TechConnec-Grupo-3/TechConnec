@@ -18,6 +18,5 @@ public interface AdminUserService {
 
     void delete(Integer id);
 
-    void login(User user);
-    User findByEmail(String email);
+    User resetPassword(Integer id,User user);
 }
