@@ -26,4 +26,6 @@ public class User {
 
     @Column(name = "register_at")
     private LocalDateTime registerAt;
-    }
+
+}
+

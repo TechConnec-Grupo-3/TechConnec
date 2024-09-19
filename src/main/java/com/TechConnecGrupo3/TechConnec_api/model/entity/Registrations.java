@@ -17,6 +17,7 @@ public class Registrations {
 
     @ManyToOne
     @JoinColumn(name = "evento_id", referencedColumnName = "id", foreignKey =@ForeignKey(name = "FK_events_registrations"))
+
     private Events evento;
 
     @Column(name = "fecha_inscripcion", nullable = false)
