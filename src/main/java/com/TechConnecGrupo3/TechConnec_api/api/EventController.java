@@ -24,4 +24,4 @@ public class EventController {
     @GetMapping("/list")
     public List<Event> listAll() {
         return adminEventService.findAll();
-    }
+    }}

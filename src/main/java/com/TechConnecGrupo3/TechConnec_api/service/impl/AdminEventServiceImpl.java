@@ -7,7 +7,6 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -18,7 +17,6 @@ public class AdminEventServiceImpl implements AdminEventService {
 
     @Override
     @Transactional(readOnly = true)
-
     public Event findById(Integer id) {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
@@ -35,9 +33,9 @@ public class AdminEventServiceImpl implements AdminEventService {
         eventFromDb.setOrganizadorId(updatedEvent.getOrganizadorId());
         eventFromDb.setUbicacion(updatedEvent.getUbicacion());
         return eventRepository.save(eventFromDb);
+    }
 
     public List<Event> findAll() {
         return eventRepository.findAll();
-
     }
 }
