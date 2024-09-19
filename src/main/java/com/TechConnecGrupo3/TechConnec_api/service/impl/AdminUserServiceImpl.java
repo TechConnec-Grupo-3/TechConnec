@@ -62,13 +62,11 @@ public class AdminUserServiceImpl implements AdminUserService {
         User user = findById(id);
         userRepository.delete(user);
     }
-
     @Override
     @Transactional
-    public void login(User user) {
-        User userOK = findById(user.getId());
-    }
-    public User findByEmail(String email) {
-        return userRepository.findByEmail(email);
+    public User resetPassword(Integer id, User user) {
+        User userFromDb = findById(id);
+        userFromDb.setPassword(user.getPassword());
+        return userRepository.save(userFromDb);
     }
 }

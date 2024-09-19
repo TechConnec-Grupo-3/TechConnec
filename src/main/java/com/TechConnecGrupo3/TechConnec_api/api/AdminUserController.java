@@ -50,13 +50,9 @@ public class AdminUserController {
         adminUserService.delete(id);
     }
 
-    @PostMapping("/login")
-    public String login(@RequestBody User user) {
-        User user2 = adminUserService.findByEmail(user.getEmail());
-        if (user2 != null && user.getPassword().equals(user2.getPassword())) {
-            return "Ingresando";
-        } else {
-            return "Denegado";
-        }
+    @PostMapping("/reset/{id}")
+    public User resetPassword(@PathVariable Integer id, @RequestBody User user) {
+        return adminUserService.resetPassword( id, user);
     }
+
 }
