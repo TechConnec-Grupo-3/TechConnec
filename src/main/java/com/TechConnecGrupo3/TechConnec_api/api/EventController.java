@@ -15,6 +15,12 @@ public class EventController {
 
     private final AdminEventService adminEventService;
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @PostMapping
+    public Event create(@RequestBody Event event) {
+        return adminEventService.create(event);
+    }
+}
 
     @PutMapping("/{id}")
     public Event update(@PathVariable Integer id, @RequestBody Event user) {
