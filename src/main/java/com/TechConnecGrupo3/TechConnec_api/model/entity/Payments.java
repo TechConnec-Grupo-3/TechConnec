@@ -27,8 +27,6 @@ public class Payments {
     private LocalDateTime fechaPago;
 
     @Column(name = "metodo_pago", nullable = false)
-    private String metodoPago;}
-
-    @Enumerated(EnumType.STRING)
-    private Payments pago;
+    private String metodoPago;
+    
 }
