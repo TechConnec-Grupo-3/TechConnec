@@ -1,0 +1,24 @@
+package com.TechConnecGrupo3.TechConnec_api.api;
+
+import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
+import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpStatus;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/event")
+@RequiredArgsConstructor
+public class EventController {
+
+    private final AdminEventService adminEventService;
+
+    @GetMapping("/list")
+    public List<Event> listAll() {
+        return adminEventService.findAll();
+    }
+
+
+}
