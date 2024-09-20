@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
+
 @RequiredArgsConstructor
 @Service
 public class AdminEventServiceImpl implements AdminEventService {
@@ -16,6 +17,11 @@ public class AdminEventServiceImpl implements AdminEventService {
     private final EventRepository eventRepository;
 
     @Override
+
+    @Transactional
+    public Event create(Event event) {
+        return eventRepository.save(event);
+
     @Transactional(readOnly = true)
     public Event findById(Integer id) {
         return eventRepository.findById(id)

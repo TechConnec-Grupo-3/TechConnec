@@ -1,4 +1,5 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -30,4 +31,3 @@ public class Payments {
 
 
 }
-

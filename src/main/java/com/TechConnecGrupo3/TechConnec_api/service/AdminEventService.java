@@ -6,6 +6,8 @@ import java.util.List;
 
 public interface AdminEventService {
 
+    Event create(Event event);
+
     Event findById(Integer id);
 
     @Transactional
@@ -13,3 +15,4 @@ public interface AdminEventService {
 
     List<Event> findAll();
 }
+
