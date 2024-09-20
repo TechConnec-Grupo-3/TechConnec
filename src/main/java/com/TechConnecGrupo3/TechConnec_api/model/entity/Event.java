@@ -1,12 +1,16 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
+
 import jakarta.persistence.*;
 import lombok.Data;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.LocalTime;
+
 
 @Data
 @Entity
 @Table(name = "events")
-public class Events {
+public class Event {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;

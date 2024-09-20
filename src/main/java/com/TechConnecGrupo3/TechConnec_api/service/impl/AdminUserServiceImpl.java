@@ -63,5 +63,12 @@ public class AdminUserServiceImpl implements AdminUserService {
         userRepository.delete(user);
     }
 
+    @Override
+    @Transactional
+    public User resetPassword(Integer id, User user) {
+        User userFromDb = findById(id);
+        userFromDb.setPassword(user.getPassword());
+        return userRepository.save(userFromDb);
+    }
 
 }
