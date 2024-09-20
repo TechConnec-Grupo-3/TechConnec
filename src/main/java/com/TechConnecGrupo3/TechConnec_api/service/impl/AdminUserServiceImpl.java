@@ -62,6 +62,7 @@ public class AdminUserServiceImpl implements AdminUserService {
         User user = findById(id);
         userRepository.delete(user);
     }
+
     @Override
     @Transactional
     public User resetPassword(Integer id, User user) {
@@ -69,4 +70,5 @@ public class AdminUserServiceImpl implements AdminUserService {
         userFromDb.setPassword(user.getPassword());
         return userRepository.save(userFromDb);
     }
+
 }
