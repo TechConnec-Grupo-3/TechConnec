@@ -1,6 +1,6 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
 
-import com.TechConnecGrupo3.TechConnec_api.emums.PaymentStatus;
+
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -19,7 +19,7 @@ public class Payments {
 
     @ManyToOne
     @JoinColumn(name = "evento_id", nullable = false)
-    private Events evento;
+    private Event evento;
 
     @Column(name = "monto", nullable = false)
     private Double monto;
