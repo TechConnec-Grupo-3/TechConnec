@@ -32,16 +32,16 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     @Override
     @Transactional
-    public User create(User user) {
+    public User create(User user) {    // LOGICA OBTENER FECHA AUTOMATICA
         user.setRegisterAt(LocalDateTime.now());
         return userRepository.save(user);
     }
 
     @Override
-    @Transactional(readOnly = true)
+    @Transactional(readOnly = true)   // LOGICA BUSCAR POR ID
     public User findById(Integer id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Author not found with id: " + id));
+                .orElseThrow(() -> new RuntimeException("No se encontró usuario con ese id " + id));
     }
 
     @Transactional
