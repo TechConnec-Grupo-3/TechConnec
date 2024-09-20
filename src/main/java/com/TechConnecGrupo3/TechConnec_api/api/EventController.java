@@ -7,7 +7,6 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-
 import java.util.List;
 
 @RestController
@@ -17,13 +16,11 @@ public class EventController {
 
     private final AdminEventService adminEventService;
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Event create(@RequestBody Event event) {
         return adminEventService.create(event);
     }
-}
 
     @PutMapping("/{id}")
     public ResponseEntity<Event> update(@PathVariable Integer id, @RequestBody Event event) {
