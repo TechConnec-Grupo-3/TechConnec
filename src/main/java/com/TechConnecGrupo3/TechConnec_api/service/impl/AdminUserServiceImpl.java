@@ -32,27 +32,28 @@ public class AdminUserServiceImpl implements AdminUserService {
 
     @Override
     @Transactional
-    public User create(User user) {    // LOGICA OBTENER FECHA AUTOMATICA
-        user.setRegisterAt(LocalDateTime.now());
+    public User create(User user) {
+        user.setCreatedAt(LocalDateTime.now());
+        user.setUpdatedAt(LocalDateTime.now());
         return userRepository.save(user);
     }
 
     @Override
-    @Transactional(readOnly = true)   // LOGICA BUSCAR POR ID
+    @Transactional(readOnly = true)
     public User findById(Integer id) {
         return userRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("No se encontró usuario con ese id " + id));
+                .orElseThrow(() -> new RuntimeException("No se encontró usuario con ese id: " + id));
     }
 
-    @Transactional
     @Override
+    @Transactional
     public User update(Integer id, User updatedUser) {
         User userFromDb = findById(id);
-        userFromDb.setFirstName(updatedUser.getFirstName());
+        userFromDb.setName(updatedUser.getName());
         userFromDb.setEmail(updatedUser.getEmail());
         userFromDb.setPassword(updatedUser.getPassword());
-        userFromDb.setTypeuser(updatedUser.getTypeuser());
-        userFromDb.setRegisterAt(LocalDateTime.now());
+        userFromDb.setInterests(updatedUser.getInterests());
+        userFromDb.setUpdatedAt(LocalDateTime.now());
         return userRepository.save(userFromDb);
     }
 
@@ -70,5 +71,4 @@ public class AdminUserServiceImpl implements AdminUserService {
         userFromDb.setPassword(user.getPassword());
         return userRepository.save(userFromDb);
     }
-
 }

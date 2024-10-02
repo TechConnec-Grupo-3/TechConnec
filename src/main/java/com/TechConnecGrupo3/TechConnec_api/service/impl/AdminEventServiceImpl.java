@@ -32,12 +32,14 @@ public class AdminEventServiceImpl implements AdminEventService {
     @Transactional
     public Event update(Integer id, Event updatedEvent) {
         Event eventFromDb = findById(id);
-        eventFromDb.setTitulo(updatedEvent.getTitulo());
-        eventFromDb.setCapacidad(updatedEvent.getCapacidad());
-        eventFromDb.setDescripcion(updatedEvent.getDescripcion());
-        eventFromDb.setFecha(updatedEvent.getFecha());
-        eventFromDb.setOrganizadorId(updatedEvent.getOrganizadorId());
-        eventFromDb.setUbicacion(updatedEvent.getUbicacion());
+
+        eventFromDb.setTitle(updatedEvent.getTitle());
+        eventFromDb.setDescription(updatedEvent.getDescription());
+        eventFromDb.setLocation(updatedEvent.getLocation());
+        eventFromDb.setEventDate(updatedEvent.getEventDate());
+        eventFromDb.setEventTime(updatedEvent.getEventTime());
+        eventFromDb.setOrganizer(updatedEvent.getOrganizer());
+
         return eventRepository.save(eventFromDb);
     }
 
