@@ -1,5 +1,8 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.EventListIdDTO;
+import com.TechConnecGrupo3.TechConnec_api.mapper.EventListMapper;
+import com.TechConnecGrupo3.TechConnec_api.mapper.EventMapper;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
 import com.TechConnecGrupo3.TechConnec_api.repository.EventRepository;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
@@ -8,12 +11,14 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class AdminEventServiceImpl implements AdminEventService {
 
     private final EventRepository eventRepository;
+    private final EventListMapper eventListMapper;
 
     @Override
     @Transactional
@@ -48,7 +53,13 @@ public class AdminEventServiceImpl implements AdminEventService {
         return eventRepository.findAll();
     }
     @Override
-    public List<Event> getEventByUserId(String userId) {
-        return eventRepository.findByUserId(userId);
+    public List<EventListIdDTO> getEventByUserId(String userId) {
+        List<Event> events = eventRepository.findByRegistrationContaining(userId);
+        return events.stream()
+                .map(event -> {
+                    EventListIdDTO dto = eventListMapper.toEventListIdDto(event);
+                    return dto;
+                })
+                .collect(Collectors.toList());
     }
 }

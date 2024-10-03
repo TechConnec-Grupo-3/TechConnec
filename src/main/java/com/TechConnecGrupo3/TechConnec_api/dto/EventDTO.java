@@ -1,5 +1,7 @@
 package com.TechConnecGrupo3.TechConnec_api.dto;
 
+import com.TechConnecGrupo3.TechConnec_api.model.enums.EventType;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
@@ -15,7 +17,7 @@ public class EventDTO {
     private String location;
     private String share;
     private String registration;
-    private String typeEvent;
+    private EventType typeEvent;
     private LocalDate eventDate;
     private LocalTime eventTime;
     private LocalDateTime createdAt;
@@ -94,11 +96,11 @@ public class EventDTO {
         this.registration = registration;
     }
 
-    public String getTypeEvent() {
+    public EventType getTypeEvent() {
         return typeEvent;
     }
 
-    public void setTypeEvent(String typeEvent) {
+    public void setTypeEvent(EventType typeEvent) {
         this.typeEvent = typeEvent;
     }
 

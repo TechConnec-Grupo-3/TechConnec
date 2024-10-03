@@ -9,10 +9,12 @@ import java.util.List;
 
 
 public interface EventRepository extends JpaRepository<Event, Integer> {
-    @Query("SELECT e FROM Event e WHERE e.registration LIKE CONCAT('%', :userId, ',%') " +
-            "OR e.registration LIKE CONCAT('%,', :userId, ',%') " +
-            "OR e.registration LIKE CONCAT('%,', :userId) " +
-            "OR e.registration LIKE CONCAT(:userId, ',%')")
-    List<Event> findByUserId(@Param("userId") String userId);
+    @Query("SELECT e FROM Event e WHERE " +
+            "e.registration LIKE CONCAT('%,', :userId, ',%') OR " +
+            "e.registration LIKE CONCAT(:userId, ',%') OR " +
+            "e.registration LIKE CONCAT('%,', :userId) OR " +
+            "e.registration = :userId")
+    List<Event> findByRegistrationContaining(@Param("userId") String userId);
 }
+
 
