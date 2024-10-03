@@ -13,10 +13,6 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "event_id", foreignKey = @ForeignKey(name = "FK_events_users"))
-    private Event event;
-
     @Column(name = "name", nullable = false)
     private String name;
 
