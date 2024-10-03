@@ -25,10 +25,16 @@ public class EventDTO {
     @NotBlank(message = "La ubicacion no puede estar vacia")
     @Size(max = 100, message = "Ubicacion maximo de 100 caracteres")
     private String location;
+    @NotBlank(message = "El campo compartir no puede estar vacio")
+    @Size(max = 100, message = "Compartir maximo de 100 caracteres")
     private String share;
+    @NotBlank(message = "El registro no puede estar vacio")
     private String registration;
+    @NotBlank(message = "El tipo de evento no puede estar vacio")
     private String typeEvent;
+    @NotBlank(message = "La fecha no puede estar vacia")
     private LocalDate eventDate;
+    @NotBlank(message = "La duracion no puede estar vacia")
     private LocalTime eventTime;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

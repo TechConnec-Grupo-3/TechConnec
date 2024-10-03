@@ -39,6 +39,7 @@ public class AdminEventServiceImpl implements AdminEventService {
         eventFromDb.setEventDate(updatedEvent.getEventDate());
         eventFromDb.setEventTime(updatedEvent.getEventTime());
         eventFromDb.setOrganizer(updatedEvent.getOrganizer());
+        eventFromDb.setExponent(updatedEvent.getExponent());
 
         return eventRepository.save(eventFromDb);
     }

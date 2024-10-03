@@ -11,11 +11,7 @@ public class User {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer user_id;
-
-    @ManyToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "event_id", foreignKey = @ForeignKey(name = "FK_events_users"))
-    private Event event;
+    private Integer user_id; //cambio delete category_id
 
     @Column(name = "name", nullable = false)
     private String name;
