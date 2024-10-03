@@ -1,6 +1,6 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
-import com.TechConnecGrupo3.TechConnec_api.dto.EventDTO;
+
 import com.TechConnecGrupo3.TechConnec_api.dto.EventIdDTO;
 import com.TechConnecGrupo3.TechConnec_api.mapper.EventIdMapper;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
