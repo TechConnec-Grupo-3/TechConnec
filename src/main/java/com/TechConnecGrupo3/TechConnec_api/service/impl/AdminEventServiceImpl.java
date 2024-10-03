@@ -47,4 +47,8 @@ public class AdminEventServiceImpl implements AdminEventService {
     public List<Event> findAll() {
         return eventRepository.findAll();
     }
+    @Override
+    public List<Event> getEventByUserId(String userId) {
+        return eventRepository.findByUserId(userId);
+    }
 }

@@ -14,5 +14,6 @@ public interface AdminEventService {
     Event update(Integer id, Event updatedEvent);
 
     List<Event> findAll();
+    List<Event> getEventByUserId(String userId);
 }
 
