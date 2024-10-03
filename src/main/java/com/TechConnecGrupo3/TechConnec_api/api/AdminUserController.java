@@ -7,6 +7,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -51,8 +52,11 @@ public class AdminUserController {
     }
 
     @PostMapping("/reset/{id}")
-    public User resetPassword(@PathVariable Integer id, @RequestBody User user) {
-        return adminUserService.resetPassword( id, user);
-    }
+    public User resetPassword(@PathVariable Integer id, @RequestBody User user) {return adminUserService.resetPassword(id, user);}
 
+    @DeleteMapping("/delete-account/{id}")
+    public ResponseEntity<String> deleteAccount(@PathVariable Integer id) {
+        adminUserService.deleteAccount(id);
+        return new ResponseEntity<>("Account deleted successfully", HttpStatus.OK);
+    }
 }
