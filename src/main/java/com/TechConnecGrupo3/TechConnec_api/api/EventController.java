@@ -1,7 +1,10 @@
 package com.TechConnecGrupo3.TechConnec_api.api;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.EventDTO;
+import com.TechConnecGrupo3.TechConnec_api.mapper.EventEditMapper;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -23,9 +26,9 @@ public class EventController {
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Event> update(@PathVariable Integer id, @RequestBody Event event) {
+    public ResponseEntity<EventDTO> update(@PathVariable Integer id, @Valid @RequestBody EventDTO eventfromDTO) {
         try {
-            Event updatedEvent = adminEventService.update(id, event);
+            EventDTO updatedEvent = adminEventService.update(id, eventfromDTO);
             return ResponseEntity.ok(updatedEvent);
         } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);

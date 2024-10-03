@@ -1,6 +1,8 @@
 package com.TechConnecGrupo3.TechConnec_api.dto;
 
+import com.TechConnecGrupo3.TechConnec_api.model.entity.Exponent;
 import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 import java.time.LocalDate;
@@ -10,11 +12,9 @@ import java.time.LocalDateTime;
 public class EventDTO {
 
     private Integer eventId;
-    @NotBlank(message = "organizerId obligatorio")
     private Integer organizerId;
-    @NotBlank(message = "categoryId obligatorio")
     private Integer categoryId;
-    @NotBlank(message = "categoryId obligatorio")
+    @NotNull(message = "El exponente no puede estar vacío")
     private Integer exponentId;
     @NotBlank(message = "El titulo no puede estar vacio")
     @Size(max = 100, message = "Titulo maximo de 100 caracteres")
@@ -25,16 +25,13 @@ public class EventDTO {
     @NotBlank(message = "La ubicacion no puede estar vacia")
     @Size(max = 100, message = "Ubicacion maximo de 100 caracteres")
     private String location;
-    @NotBlank(message = "El campo compartir no puede estar vacio")
     @Size(max = 100, message = "Compartir maximo de 100 caracteres")
     private String share;
-    @NotBlank(message = "El registro no puede estar vacio")
     private String registration;
-    @NotBlank(message = "El tipo de evento no puede estar vacio")
     private String typeEvent;
-    @NotBlank(message = "La fecha no puede estar vacia")
+    @NotNull(message = "La fecha no puede estar vacía")
     private LocalDate eventDate;
-    @NotBlank(message = "La duracion no puede estar vacia")
+    @NotNull(message = "La duracion no puede estar vacía")
     private LocalTime eventTime;
     private LocalDateTime createdAt;
     private LocalDateTime updatedAt;

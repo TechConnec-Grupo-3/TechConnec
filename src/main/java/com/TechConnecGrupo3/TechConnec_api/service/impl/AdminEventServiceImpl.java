@@ -1,5 +1,8 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.EventDTO;
+import com.TechConnecGrupo3.TechConnec_api.exception.ResourceNotFoundException;
+import com.TechConnecGrupo3.TechConnec_api.mapper.EventEditMapper;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
 import com.TechConnecGrupo3.TechConnec_api.repository.EventRepository;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
@@ -14,6 +17,7 @@ import java.util.List;
 public class AdminEventServiceImpl implements AdminEventService {
 
     private final EventRepository eventRepository;
+    private final EventEditMapper eventEditMapper;
 
     @Override
     @Transactional
@@ -25,23 +29,24 @@ public class AdminEventServiceImpl implements AdminEventService {
     @Transactional(readOnly = true)
     public Event findById(Integer id) {
         return eventRepository.findById(id)
-                .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
+                .orElseThrow(() -> new ResourceNotFoundException("El evento con ID " + id + " no fue encontrado"));
     }
 
     @Override
     @Transactional
-    public Event update(Integer id, Event updatedEvent) {
+    public EventDTO update(Integer id, EventDTO updatedEventDTO) {
         Event eventFromDb = findById(id);
 
-        eventFromDb.setTitle(updatedEvent.getTitle());
-        eventFromDb.setDescription(updatedEvent.getDescription());
-        eventFromDb.setLocation(updatedEvent.getLocation());
-        eventFromDb.setEventDate(updatedEvent.getEventDate());
-        eventFromDb.setEventTime(updatedEvent.getEventTime());
-        eventFromDb.setOrganizer(updatedEvent.getOrganizer());
-        eventFromDb.setExponent(updatedEvent.getExponent());
+        eventFromDb.setTitle(updatedEventDTO.getTitle());
+        eventFromDb.setDescription(updatedEventDTO.getDescription());
+        eventFromDb.setEventDate(updatedEventDTO.getEventDate());
+        eventFromDb.setEventTime(updatedEventDTO.getEventTime());
+        eventFromDb.setLocation(updatedEventDTO.getLocation());
+        eventFromDb.setExponent(findById(updatedEventDTO.getExponentId()).getExponent());
 
-        return eventRepository.save(eventFromDb);
+        eventFromDb = eventRepository.save(eventFromDb);
+
+        return eventEditMapper.toEventEditDTO(eventFromDb);
     }
 
     @Override
