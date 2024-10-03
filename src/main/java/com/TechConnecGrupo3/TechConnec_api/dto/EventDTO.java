@@ -1,5 +1,8 @@
 package com.TechConnecGrupo3.TechConnec_api.dto;
 
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.Size;
+
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.time.LocalDateTime;
@@ -7,11 +10,20 @@ import java.time.LocalDateTime;
 public class EventDTO {
 
     private Integer eventId;
+    @NotBlank(message = "organizerId obligatorio")
     private Integer organizerId;
+    @NotBlank(message = "categoryId obligatorio")
     private Integer categoryId;
+    @NotBlank(message = "categoryId obligatorio")
     private Integer exponentId;
+    @NotBlank(message = "El titulo no puede estar vacio")
+    @Size(max = 100, message = "Titulo maximo de 100 caracteres")
     private String title;
+    @NotBlank(message = "La descripcion no puede estar vacio")
+    @Size(max = 500, message = "Descripcion maximo de 500 caracteres")
     private String description;
+    @NotBlank(message = "La ubicacion no puede estar vacia")
+    @Size(max = 100, message = "Ubicacion maximo de 100 caracteres")
     private String location;
     private String share;
     private String registration;
