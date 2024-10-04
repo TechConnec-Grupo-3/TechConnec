@@ -15,6 +15,13 @@ public class CommentController {
 
     private final AdminCommentService adminCommentService;
 
+
+    @ResponseStatus(HttpStatus.NO_CONTENT)
+    @DeleteMapping("/{id}")
+    public void delete(@PathVariable Integer id) {
+        adminCommentService.delete(id);
+    }
+  
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public ResponseEntity<CommentDTO> create(@RequestBody CommentDTO commentDTO) {
