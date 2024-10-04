@@ -6,8 +6,13 @@ import com.TechConnecGrupo3.TechConnec_api.service.AdminUserService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -63,12 +68,22 @@ public class AdminUserServiceImpl implements AdminUserService {
         User user = findById(id);
         userRepository.delete(user);
     }
-
     @Override
     @Transactional
     public User resetPassword(Integer id, User user) {
         User userFromDb = findById(id);
         userFromDb.setPassword(user.getPassword());
         return userRepository.save(userFromDb);
+    }
+
+    @Override
+    public void deleteAccount(Integer id) {
+        User userFromDb = findById(id);
+        userRepository.delete(userFromDb);
+    }
+    public ResponseEntity<String> deleteAccount(Integer id, User user) {
+        User userFromDb = findById(id);
+        userRepository.delete(userFromDb);
+        return new ResponseEntity<>("Account deleted successfully", HttpStatus.OK);
     }
 }
