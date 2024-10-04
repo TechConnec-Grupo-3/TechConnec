@@ -17,7 +17,6 @@ import java.time.LocalDateTime;
 public class AdminCommentServiceImpl implements AdminCommentService {
     private final CommentUserMapper commentUserMapper;
     private final CommentRepository commentRepository;
-    private final CommentMapper commentMapper;
 
     @Override
     @Transactional
@@ -28,24 +27,4 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         return commentUserMapper.toCommentDTO(comment);
     }
 
-    @Override
-    @Transactional
-    public CommentDTO update(Integer commentId, CommentDTO commentDTO) {
-        Comment existingComment = commentRepository.findById(commentId)
-                .orElseThrow(() -> new RuntimeException("Comment not found"));
-
-        existingComment.setRating(commentDTO.getRating());
-        existingComment.setComments(commentDTO.getComments());
-
-        commentRepository.save(existingComment);
-        return commentUserMapper.toCommentDTO(existingComment);
-    }
-
-    @Override
-    @Transactional
-    public void delete(Integer commentId) {
-        Comment existingComment = commentRepository.findById(commentId)
-                .orElseThrow(() -> new RuntimeException("Comment not found"));
-        commentRepository.delete(existingComment);
-    }
 }
