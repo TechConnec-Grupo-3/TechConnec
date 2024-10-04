@@ -2,6 +2,8 @@ package com.TechConnecGrupo3.TechConnec_api.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NonNull;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -17,6 +19,7 @@ public class User {
     private String name;
 
     @Column(name = "email", nullable = false)
+    @NonNull
     private String email;
 
     @Column(name = "password", nullable = false)
