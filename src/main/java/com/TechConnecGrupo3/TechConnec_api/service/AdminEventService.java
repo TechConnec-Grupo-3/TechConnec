@@ -22,7 +22,6 @@ public interface AdminEventService {
 
     List<Event> findAll();
 
-
     List<EventIdDTO> findByOrganizerId(Integer organizerId);
 
     List<AssistantDTO> findAllAssistants(Integer id);
