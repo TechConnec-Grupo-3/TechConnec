@@ -1,12 +1,12 @@
 package com.TechConnecGrupo3.TechConnec_api.api;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.AssistantDTO;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
 
 import java.util.List;
 
@@ -17,13 +17,11 @@ public class EventController {
 
     private final AdminEventService adminEventService;
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @PostMapping
     public Event create(@RequestBody Event event) {
         return adminEventService.create(event);
     }
-}
 
     @PutMapping("/{id}")
     public ResponseEntity<Event> update(@PathVariable Integer id, @RequestBody Event event) {
@@ -38,5 +36,10 @@ public class EventController {
     @GetMapping("/list")
     public List<Event> listAll() {
         return adminEventService.findAll();
+    }
+
+    @GetMapping("/{id}/assistant")
+    public List<AssistantDTO> getPaymentsByEventId(@PathVariable Integer id) {
+        return adminEventService.findAllAssistants(id);
     }
 }

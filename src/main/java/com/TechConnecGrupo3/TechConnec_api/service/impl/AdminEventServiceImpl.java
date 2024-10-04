@@ -1,47 +1,68 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.AssistantDTO;
+import com.TechConnecGrupo3.TechConnec_api.mapper.AssistantMapper;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
+import com.TechConnecGrupo3.TechConnec_api.model.entity.Payment;
 import com.TechConnecGrupo3.TechConnec_api.repository.EventRepository;
+import com.TechConnecGrupo3.TechConnec_api.repository.PaymentRepository;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
-
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class AdminEventServiceImpl implements AdminEventService {
 
     private final EventRepository eventRepository;
+    private final PaymentRepository paymentRepository;
+    private final AssistantMapper assistantMapper;
 
     @Override
-
     @Transactional
     public Event create(Event event) {
         return eventRepository.save(event);
+    }
 
+    @Override
     @Transactional(readOnly = true)
     public Event findById(Integer id) {
         return eventRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Event not found with id: " + id));
     }
 
-    @Transactional
     @Override
+    @Transactional
     public Event update(Integer id, Event updatedEvent) {
         Event eventFromDb = findById(id);
-        eventFromDb.setTitulo(updatedEvent.getTitulo());
-        eventFromDb.setCapacidad(updatedEvent.getCapacidad());
-        eventFromDb.setDescripcion(updatedEvent.getDescripcion());
-        eventFromDb.setFecha(updatedEvent.getFecha());
-        eventFromDb.setOrganizadorId(updatedEvent.getOrganizadorId());
-        eventFromDb.setUbicacion(updatedEvent.getUbicacion());
+
+        eventFromDb.setTitle(updatedEvent.getTitle());
+        eventFromDb.setDescription(updatedEvent.getDescription());
+        eventFromDb.setLocation(updatedEvent.getLocation());
+        eventFromDb.setEventDate(updatedEvent.getEventDate());
+        eventFromDb.setEventTime(updatedEvent.getEventTime());
+        eventFromDb.setOrganizer(updatedEvent.getOrganizer());
+
         return eventRepository.save(eventFromDb);
     }
 
+    @Override
     public List<Event> findAll() {
         return eventRepository.findAll();
+    }
+
+    @Override
+    public List<AssistantDTO> findAllAssistants(Integer id) {
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Organizer not found with id: " + id));;
+
+        return paymentRepository.findByEvent(event)
+                .stream()
+                .map(assistantMapper::toAsistantDTO)
+                .collect(Collectors.toList());
     }
 }

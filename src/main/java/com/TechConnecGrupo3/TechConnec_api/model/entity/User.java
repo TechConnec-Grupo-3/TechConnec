@@ -1,6 +1,5 @@
 package com.TechConnecGrupo3.TechConnec_api.model.entity;
 
-import com.TechConnecGrupo3.TechConnec_api.emums.PaymentStatus;
 import jakarta.persistence.*;
 import lombok.Data;
 import java.time.LocalDateTime;
@@ -9,12 +8,13 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+    private Integer user_id;
 
-    @Column(name = "first_name", nullable = false)
-    private String firstName;
+    @Column(name = "name", nullable = false)
+    private String name;
 
     @Column(name = "email", nullable = false)
     private String email;
@@ -22,12 +22,21 @@ public class User {
     @Column(name = "password", nullable = false)
     private String password;
 
-    @Column(name = "typeuser")
-    private String typeuser;
+    @Column(name = "interests")
+    private String interests;
 
-    @Column(name = "register_at")
-    private LocalDateTime registerAt;
+    @Column(name = "skills")
+    private String skills;
 
-    @Enumerated(EnumType.STRING)
-    private PaymentStatus pago;
+    @Column(name = "link")
+    private String link;
+
+    @Column(name = "profile_picture")
+    private String profilePicture;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
+
+    @Column(name = "updated_at")
+    private LocalDateTime updatedAt;
 }
