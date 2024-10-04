@@ -1,5 +1,10 @@
 package com.TechConnecGrupo3.TechConnec_api.api;
 
+
+import com.TechConnecGrupo3.TechConnec_api.dto.EventIdDTO;
+
+import com.TechConnecGrupo3.TechConnec_api.dto.AssistantDTO;
+
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
 import lombok.RequiredArgsConstructor;
@@ -36,6 +41,7 @@ public class EventController {
     public List<Event> listAll() {
         return adminEventService.findAll();
     }
+
     @GetMapping("/{id}/share")
     public ResponseEntity<String> shareEvent(@PathVariable Integer id) {
         Event event = adminEventService.findById(id);
@@ -66,5 +72,17 @@ public class EventController {
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
         }
+
+
+
+    @GetMapping("/{id}/list")
+    public List<EventIdDTO> listAllByOrganizer(@PathVariable Integer id) {
+        return adminEventService.findByOrganizerId(id);
+  
+    @GetMapping("/{id}/assistant")
+    public List<AssistantDTO> getPaymentsByEventId(@PathVariable Integer id) {
+        return adminEventService.findAllAssistants(id);
+
+
     }
 }
