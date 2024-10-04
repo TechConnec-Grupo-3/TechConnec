@@ -42,6 +42,38 @@ public class EventController {
         return adminEventService.findAll();
     }
 
+    @GetMapping("/{id}/share")
+    public ResponseEntity<String> shareEvent(@PathVariable Integer id) {
+        Event event = adminEventService.findById(id);
+        if (event != null) {
+            String shareLink = "https://example.com/events/" + id;
+            return ResponseEntity.ok(shareLink);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+
+    @GetMapping("/{id}/share/social")
+    public ResponseEntity<String> shareEventSocial(@PathVariable Integer id) {
+        Event event = adminEventService.findById(id);
+        if (event != null) {
+            String shareLink = "https://example.com/events/" + id;
+            String socialMediaLink = "https://www.facebook.com/sharer/sharer.php?u=" + shareLink;
+            return ResponseEntity.ok(socialMediaLink);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+    }
+    @GetMapping("/{id}")
+    public ResponseEntity<Event> findById(@PathVariable Integer id) {
+        Event event = adminEventService.findById(id);
+        if (event != null) {
+            return ResponseEntity.ok(event);
+        } else {
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
+        }
+
+
 
     @GetMapping("/{id}/list")
     public List<EventIdDTO> listAllByOrganizer(@PathVariable Integer id) {
@@ -50,6 +82,7 @@ public class EventController {
     @GetMapping("/{id}/assistant")
     public List<AssistantDTO> getPaymentsByEventId(@PathVariable Integer id) {
         return adminEventService.findAllAssistants(id);
+
 
     }
 }
