@@ -1,5 +1,6 @@
 package com.TechConnecGrupo3.TechConnec_api.api;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.AssistantDTO;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
 import lombok.RequiredArgsConstructor;
@@ -35,5 +36,10 @@ public class EventController {
     @GetMapping("/list")
     public List<Event> listAll() {
         return adminEventService.findAll();
+    }
+
+    @GetMapping("/{id}/assistant")
+    public List<AssistantDTO> getPaymentsByEventId(@PathVariable Integer id) {
+        return adminEventService.findAllAssistants(id);
     }
 }

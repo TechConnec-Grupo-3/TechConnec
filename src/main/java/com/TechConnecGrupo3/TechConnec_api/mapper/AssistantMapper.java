@@ -1,7 +1,7 @@
 package com.TechConnecGrupo3.TechConnec_api.mapper;
 
 import com.TechConnecGrupo3.TechConnec_api.dto.AssistantDTO;
-import com.TechConnecGrupo3.TechConnec_api.model.entity.User;
+import com.TechConnecGrupo3.TechConnec_api.model.entity.Payment;
 import lombok.Data;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
@@ -18,11 +18,11 @@ public class AssistantMapper {
         this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
     }
 
-    public AssistantDTO toAsistantDTO(User user) {
-        AssistantDTO assistantDTO = modelMapper.map(user, AssistantDTO.class);
-        assistantDTO.setName(user.getName());
-        assistantDTO.setEmail(user.getEmail());
-        assistantDTO.setEventTime(user.getEventTime());
+    public AssistantDTO toAsistantDTO(Payment payment) {
+        AssistantDTO assistantDTO = modelMapper.map(payment, AssistantDTO.class);
+        assistantDTO.setName(payment.getUser().getName());
+        assistantDTO.setEmail(payment.getUser().getEmail());
+        assistantDTO.setStatus(payment.getPaymentStatus());
         return assistantDTO;
     }
 }

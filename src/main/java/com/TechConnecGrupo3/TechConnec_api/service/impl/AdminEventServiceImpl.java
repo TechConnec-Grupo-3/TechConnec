@@ -1,19 +1,26 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
+import com.TechConnecGrupo3.TechConnec_api.dto.AssistantDTO;
+import com.TechConnecGrupo3.TechConnec_api.mapper.AssistantMapper;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Event;
+import com.TechConnecGrupo3.TechConnec_api.model.entity.Payment;
 import com.TechConnecGrupo3.TechConnec_api.repository.EventRepository;
+import com.TechConnecGrupo3.TechConnec_api.repository.PaymentRepository;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminEventService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
 public class AdminEventServiceImpl implements AdminEventService {
 
     private final EventRepository eventRepository;
+    private final PaymentRepository paymentRepository;
+    private final AssistantMapper assistantMapper;
 
     @Override
     @Transactional
@@ -46,5 +53,16 @@ public class AdminEventServiceImpl implements AdminEventService {
     @Override
     public List<Event> findAll() {
         return eventRepository.findAll();
+    }
+
+    @Override
+    public List<AssistantDTO> findAllAssistants(Integer id) {
+        Event event = eventRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Organizer not found with id: " + id));;
+
+        return paymentRepository.findByEvent(event)
+                .stream()
+                .map(assistantMapper::toAsistantDTO)
+                .collect(Collectors.toList());
     }
 }
