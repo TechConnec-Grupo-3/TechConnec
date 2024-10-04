@@ -47,4 +47,5 @@ public class AdminEventServiceImpl implements AdminEventService {
     public List<Event> findAll() {
         return eventRepository.findAll();
     }
+
 }
