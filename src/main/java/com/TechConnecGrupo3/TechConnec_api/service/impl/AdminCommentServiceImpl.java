@@ -10,15 +10,24 @@ import jakarta.transaction.Transactional;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
+
 import java.time.LocalDateTime;
+
 
 @RequiredArgsConstructor
 @Service
 public class AdminCommentServiceImpl implements AdminCommentService {
+
     private final CommentUserMapper commentUserMapper;
     private final CommentRepository commentRepository;
-
-
+  
+    @Override
+    @Transactional
+    public void delete(Integer commentId) {
+        Comment existingComment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
+        commentRepository.delete(existingComment);
+    }
 
     @Override
     @Transactional
@@ -31,6 +40,16 @@ public class AdminCommentServiceImpl implements AdminCommentService {
 
         commentRepository.save(existingComment);
         return commentUserMapper.toCommentDTO(existingComment);
+    }
+
+    @Override
+    @Transactional
+    public CommentDTO create(CommentDTO commentDTO) {
+        commentDTO.setSubmittedAt(LocalDateTime.now());
+        Comment comment = commentUserMapper.toEntity(commentDTO);
+        commentRepository.save(comment);
+        return commentUserMapper.toCommentDTO(comment);
+
     }
 
 

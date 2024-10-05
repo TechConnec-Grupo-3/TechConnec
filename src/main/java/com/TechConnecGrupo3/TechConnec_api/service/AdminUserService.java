@@ -19,4 +19,5 @@ public interface AdminUserService {
     void delete(Integer id);
 
     User resetPassword(Integer id,User user);
+    void deleteAccount(Integer id);
 }
