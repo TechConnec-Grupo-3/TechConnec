@@ -2,9 +2,7 @@ package com.TechConnecGrupo3.TechConnec_api.api;
 
 import com.TechConnecGrupo3.TechConnec_api.model.entity.User;
 import com.TechConnecGrupo3.TechConnec_api.service.AdminUserService;
-import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
-import org.apache.tomcat.util.net.openssl.ciphers.Authentication;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
@@ -56,12 +54,5 @@ public class AdminUserController {
     public User resetPassword(@PathVariable Integer id, @RequestBody User user) {
         return adminUserService.resetPassword( id, user);
     }
-    private Integer getCurrentUserId(HttpSession session) {
-        return (Integer) session.getAttribute("userId");
-    }
-    @GetMapping("/me")
-    public User getMyProfile(HttpSession session) {
-        Integer userId = getCurrentUserId(session);
-        return adminUserService.findById(userId);
-    }
+
 }
