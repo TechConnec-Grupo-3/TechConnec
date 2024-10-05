@@ -1,4 +1,5 @@
 package com.TechConnecGrupo3.TechConnec_api.repository;
+
 import com.TechConnecGrupo3.TechConnec_api.dto.CategoryDTO;
 import com.TechConnecGrupo3.TechConnec_api.dto.EventDTO;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Category;
@@ -12,4 +13,5 @@ public interface CategoryRepository extends JpaRepository<Category, Integer> {
     Category findByName(String name);
     List<EventDTO> getEventsByCategory (Integer categoryId);
 }
+
 
