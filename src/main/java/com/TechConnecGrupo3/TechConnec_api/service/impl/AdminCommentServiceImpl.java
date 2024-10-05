@@ -1,6 +1,5 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 
-
 import com.TechConnecGrupo3.TechConnec_api.dto.CommentDTO;
 import com.TechConnecGrupo3.TechConnec_api.mapper.CommentMapper;
 import com.TechConnecGrupo3.TechConnec_api.mapper.CommentUserMapper;
@@ -30,7 +29,18 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         commentRepository.delete(existingComment);
     }
 
+    @Override
+    @Transactional
+    public CommentDTO update(Integer commentId, CommentDTO commentDTO) {
+        Comment existingComment = commentRepository.findById(commentId)
+                .orElseThrow(() -> new RuntimeException("Comment not found"));
 
+        existingComment.setRating(commentDTO.getRating());
+        existingComment.setComments(commentDTO.getComments());
+
+        commentRepository.save(existingComment);
+        return commentUserMapper.toCommentDTO(existingComment);
+    }
 
     @Override
     @Transactional
@@ -39,6 +49,7 @@ public class AdminCommentServiceImpl implements AdminCommentService {
         Comment comment = commentUserMapper.toEntity(commentDTO);
         commentRepository.save(comment);
         return commentUserMapper.toCommentDTO(comment);
+
     }
 
 

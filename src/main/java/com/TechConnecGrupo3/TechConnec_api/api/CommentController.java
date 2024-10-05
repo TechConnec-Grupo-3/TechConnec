@@ -16,6 +16,16 @@ public class CommentController {
     private final AdminCommentService adminCommentService;
 
 
+
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/{id}")
+    public CommentDTO update(@PathVariable Integer id, @RequestBody CommentDTO commentDTO) {
+        return adminCommentService.update(id, commentDTO);
+    }
+
+
+
+
     @ResponseStatus(HttpStatus.NO_CONTENT)
     @DeleteMapping("/{id}")
     public void delete(@PathVariable Integer id) {
@@ -28,4 +38,5 @@ public class CommentController {
         CommentDTO createdComment = adminCommentService.create(commentDTO);
         return ResponseEntity.status(HttpStatus.CREATED).body(createdComment);
     }
+
 }
