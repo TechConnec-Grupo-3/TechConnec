@@ -52,6 +52,7 @@ public class AdminEventServiceImpl implements AdminEventService {
     public List<Event> findAll() {
         return eventRepository.findAll();
     }
+
     @Override
     public List<EventListIdDTO> getEventByUserId(String userId) {
         List<Event> events = eventRepository.findByRegistrationContaining(userId);

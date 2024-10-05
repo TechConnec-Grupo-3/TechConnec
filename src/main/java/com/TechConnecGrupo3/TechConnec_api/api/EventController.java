@@ -37,8 +37,8 @@ public class EventController {
     public List<Event> listAll() {
         return adminEventService.findAll();
     }
-    @GetMapping("/{id}")
 
+    @GetMapping("/{id}")
     public List<EventListIdDTO> getEventByUserId(@PathVariable String id) {
         return adminEventService.getEventByUserId(id);
     }

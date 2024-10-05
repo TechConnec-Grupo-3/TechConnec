@@ -13,11 +13,7 @@ public class EventListIdDTO {
     private String title;
     private String description;
     private String location;
-    private String share;
-    private String registration;
     private EventType typeEvent;
     private LocalDate eventDate;
     private LocalTime eventTime;
-    private LocalDateTime createdAt;
-    private LocalDateTime updatedAt;
 }
