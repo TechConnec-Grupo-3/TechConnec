@@ -1,15 +1,21 @@
 package com.TechConnecGrupo3.TechConnec_api.service.impl;
 import com.TechConnecGrupo3.TechConnec_api.dto.CategoryDTO;
+
+import com.TechConnecGrupo3.TechConnec_api.dto.EventDTO;
 import com.TechConnecGrupo3.TechConnec_api.model.entity.Category;
 import com.TechConnecGrupo3.TechConnec_api.repository.CategoryRepository;
+import com.TechConnecGrupo3.TechConnec_api.service.AdminCreateCategory;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
+
 @RequiredArgsConstructor
 @Service
-public class AdminCreateCategoryImpl implements AdminCreateCategory{
+public class AdminCreateCategoryImpl implements AdminCreateCategory {
+
     private final CategoryRepository categoryRepository;
 
 
@@ -35,6 +41,28 @@ public class AdminCreateCategoryImpl implements AdminCreateCategory{
     }
 
     @Override
+    public CategoryDTO addCategory(CategoryDTO categoryDTO) {
+        try {
+            Category category = new Category();
+            category.setName(categoryDTO.getName());
+            category.setDescription(categoryDTO.getDescription());
+            Category createdCategory = create(category);
+            return mapToDTO(createdCategory);
+        } catch (Exception e) {
+            return null;
+        }
+    }
+    @Override
+    @Transactional
+    public CategoryDTO mapToDTO(Category category) {
+        CategoryDTO categoryDTO = new CategoryDTO();
+        categoryDTO.setCategoryId(category.getCategory_id());
+        categoryDTO.setName(category.getName());
+        categoryDTO.setDescription(category.getDescription());
+        return categoryDTO;
+    }
+
+    @Override
     @Transactional
     public void delete(Integer id) {
         categoryRepository.deleteById(id);
@@ -47,16 +75,23 @@ public class AdminCreateCategoryImpl implements AdminCreateCategory{
     }
 
     @Override
+    public List<EventDTO> getEventsByCategory (Integer categoryId){
+        return categoryRepository.getEventsByCategory(categoryId);
+    }
+
+    @Override
     @Transactional(readOnly = true)
     public Category findById(Integer id) {
         return categoryRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Categoría no encontrada con id: " + id));
     }
 
+
     @Override
     public CategoryDTO addCategory(CategoryDTO categoryDTO) {
         return null;
     }
+
 
     @Override
     public List<CategoryDTO> getAllCategory() {

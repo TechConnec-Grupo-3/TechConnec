@@ -2,6 +2,8 @@ package com.TechConnecGrupo3.TechConnec_api.model.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NonNull;
+
 import java.time.LocalDateTime;
 
 @Data
@@ -13,14 +15,11 @@ public class User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer user_id;
 
-    @ManyToOne
-    @JoinColumn(name = "event_id", referencedColumnName = "event_id", foreignKey = @ForeignKey(name = "FK_events_users"))
-    private Event event;
-
     @Column(name = "name", nullable = false)
     private String name;
 
     @Column(name = "email", nullable = false)
+    @NonNull
     private String email;
 
     @Column(name = "password", nullable = false)

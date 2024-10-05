@@ -22,7 +22,7 @@ public class EventDTO {
     private LocalDateTime updatedAt;
 
     // Getters and Setters
-    public Integer getEventId() {
+    public Integer getCategory_id() {
         return eventId;
     }
 
