@@ -19,5 +19,4 @@ public interface AdminUserService {
     void delete(Integer id);
 
     User resetPassword(Integer id,User user);
-    User getMyProfile(Integer id);
 }
